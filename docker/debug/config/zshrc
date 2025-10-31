@@ -1,1 +1,7 @@
 PS1="%n@%m %1~: "
+RPROMPT="%F{241}%B%t%b%f"
+
+export LC_ALL="eu_US.UTF-8"
+export KUBE_EDITOR="nvim"
+export USE_GKE_GCLOUD_AUTH_PLUGIN="true"
+export AWS_PAGER=""
