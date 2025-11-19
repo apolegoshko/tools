@@ -1,3 +1,5 @@
+setopt prompt_subst
+
 # PS1: it is a shell prompt string variable that defines text displayed before each command you enter.
 # %n: it is used to display the username of the logged-in user.
 # %m: it shows the hostname of the system.
@@ -5,8 +7,8 @@
 # The @ and : symbols were only used for aesthetic purposes.
 PS1="%n@%m %1:~/ "
 
-# addd time or any other element to the right corner:
-RPROMPT="%F{241}%B%t%b%f"
+# add k8s cluster context and time to the right corner:
+RPROMPT='[$(kubectx -c)] %F{241}%B%t%b%f'
 
 export LC_ALL="eu_US.UTF-8"
 export KUBE_EDITOR="nvim"
