@@ -1,7 +1,7 @@
 FROM debian:stable-slim
 
 ENV user=user group=default
-ENV KUBECTL_VERSION
+ENV KUBECTL_VERSION=1.34
 
 RUN apt-get update
 RUN apt-get install -y curl wget zsh netcat-openbsd sed \
