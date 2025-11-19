@@ -23,5 +23,7 @@ source <(flux completion zsh)
 alias k="kubectl"
 alias kgp="kubectl get pods"
 alias kgpa="kubectl get pods -A"
+alias kx="kubectx"
+alias kns="kubens"
 
 alias glogin="gcloud auth login"
