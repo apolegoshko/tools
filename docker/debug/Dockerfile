@@ -21,4 +21,4 @@ RUN apt-get clean
 RUN addgroup $group && adduser --disabled-password --gecos "" --shell /bin/zsh --ingroup $group $user
 USER user
 WORKDIR /home/user
-COPY --chown=$user:$group ./config/zshrc .zshrc --chmod
+COPY --chown=$user:$group ./config/zshrc .zshrc
