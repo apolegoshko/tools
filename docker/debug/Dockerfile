@@ -1,10 +1,10 @@
-FROM alpine:3.22
+FROM alpine:3.23.3
 
-ENV user=user group=default
+ARG user=user group=default
 
-RUN apk update
-RUN apk add curl wget zsh netcat-openbsd bind-tools postgresql-client valkey-cli
-RUN apk cache clean
-RUN addgroup -S $group && adduser -D -s /bin/zsh $user -G $group
+RUN apk update && apk add bash bash-completion curl wget netcat-openbsd sed gnupg tcpdump redis postgresql && apk cache clean
+
+RUN addgroup $group && adduser --disabled-password --gecos "" --shell /bin/bash --ingroup $group $user
 USER user
-ADD ./config/zshrc /home/user/.zshrc
+WORKDIR /home/user
+COPY --chown=$user:$group bashrc .bashrc
