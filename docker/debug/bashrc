@@ -4,6 +4,8 @@ export EDITOR="vi"
 
 alias ll='ls -lha'
 alias gr='grep --color=always -i'
+alias free='free -m'
+alias df='df -h'
 alias myip='curl ifconfig.me; echo'
 
 ncvz () {
