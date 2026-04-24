@@ -1,6 +1,9 @@
 PS1='\[\e[32m\]\u@\h \[\e[34m\]\w \[\e[0m\]\$ '
 
-export EDITOR="vi"
+EDITOR="vi"
+BASHRC="/home/user/.bashrc"
+DEFAULT_REGION="us-central1"
+ARCH=$(apk --print-arch)
 
 alias ll='ls -lha'
 alias gr='grep --color=always -i'
@@ -10,4 +13,35 @@ alias myip='curl ifconfig.me; echo'
 
 ncvz () {
   nc -vz "$1" "$2"
+}
+
+gcliInstall () {
+  case "$ARCH" in \
+    x86_64)  GCLOUD_ARCH="x86_64" ;; \
+    aarch64) GCLOUD_ARCH="arm" ;; \
+    *) echo "Unsupported: $ARCH" && exit 1 ;; \
+  esac && \
+  cd /tmp
+  curl -O "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-linux-${GCLOUD_ARCH}.tar.gz"
+  tar -xf google-cloud-cli-linux-${GCLOUD_ARCH}.tar.gz
+  rm -rf google-cloud-cli-linux-${GCLOUD_ARCH}.tar.gz
+  ./google-cloud-sdk/install.sh --usage-reporting false --path-update true --command-completion true --rc-path $BASHRC \
+    --additional-components gke-gcloud-auth-plugin
+  cd -
+}
+
+gcliInit () {
+  gcloud auth login --no-launch-browser
+}
+
+setProject () {
+  gcloud config set project $1
+}
+
+getClusters () {
+  gcloud container clusters list
+}
+
+getKubecontext () {
+  gcloud container clusters get-credentials $1 --region $DEFAULT_REGION
 }
