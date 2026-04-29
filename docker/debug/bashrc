@@ -48,10 +48,10 @@ setProject () {
   gcloud config set project $1
 }
 
-getClusters () {
+listClusters () {
   gcloud container clusters list
 }
 
-getKubecontext () {
-  gcloud container clusters get-credentials $1 --region $DEFAULT_REGION
+getClusters () {
+  for cluster in $(gcloud container clusters list --format="value(name)"); do gcloud container clusters get-credentials $cluster --region $DEFAULT_REGION; done
 }
