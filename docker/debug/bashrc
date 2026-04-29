@@ -11,6 +11,16 @@ alias free='free -m'
 alias df='df -h'
 alias myip='curl ifconfig.me; echo'
 
+alias k="kubectl"
+alias kgp="kubectl get pods"
+alias kgpaw="kubectl get pods -A --watch-only"
+alias kgpa="kubectl get pods -A"
+alias kgpaw="kubectl get pods -A --watch-only"
+alias wkgp='watch "kubectl get pods"'
+alias wkgpa='watch "kubectl get pods -A"'
+alias kx="kubectx"
+alias kns="kubens"
+
 ncvz () {
   nc -vz "$1" "$2"
 }
