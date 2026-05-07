@@ -6,7 +6,7 @@ ARG KUBECTX_VERSION=0.11.0
 ARG FZF_VERSION=0.72.0
 
 RUN apk update && apk add bash bash-completion curl wget netcat-openbsd tcpdump doas jq \
-    sed gnupg tcpdump redis postgresql tmux ca-certificates python3 kubectl go git openssl && apk cache clean
+    sed gnupg tcpdump redis postgresql tmux ca-certificates python3 kubectl go git openssl neovim && apk cache clean
 
 RUN addgroup $group && adduser --disabled-password --gecos "" --shell /bin/bash --ingroup $group $user
 RUN echo "permit nopass $user cmd tcpdump" >> /etc/doas.conf
