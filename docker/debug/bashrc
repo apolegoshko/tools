@@ -20,7 +20,6 @@ alias wkgp='watch "kubectl get pods"'
 alias wkgpa='watch "kubectl get pods -A"'
 alias kx="kubectx"
 alias kns="kubens"
-alias es_refresh="kubectl annotate es force-sync=$(date +%s) --overwrite "
 
 ncvz () {
   nc -vz "$1" "$2"
