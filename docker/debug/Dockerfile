@@ -5,7 +5,7 @@ ARG STERN_VERSION=1.33.1
 ARG KUBECTX_VERSION=0.11.0
 ARG FZF_VERSION=0.72.0
 
-RUN apk update && apk add bash bash-completion curl wget netcat-openbsd tcpdump doas jq \
+RUN apk update && apk add bash bash-completion curl wget netcat-openbsd tcpdump doas jq openssh \
     sed gnupg tcpdump redis postgresql tmux ca-certificates python3 kubectl go git openssl neovim && apk cache clean
 
 RUN addgroup $group && adduser --disabled-password --gecos "" --shell /bin/bash --ingroup $group $user
